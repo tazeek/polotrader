@@ -73,3 +73,14 @@ class Poloniex:
 
 	def returnMarketTradeHistory (self, currency_pair):
 		return self.apiQuery("returnMarketTradeHistory", {'currencyPair': currency_pair})
+
+
+
+
+'''
+https://pastebin.com/8fBVpjaj
+https://github.com/owocki/pytrader/blob/master/history/poloniex.py
+https://poloniex.com/support/api/
+https://poloniexapi.wordpress.com/
+https://github.com/s4w3d0ff/python-poloniex
+'''
