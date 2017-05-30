@@ -34,7 +34,7 @@ class Poloniex:
 		return after
 
 	# API Querying
-	def apiQuery(self, command, req={}):
+	def apiQuery(self, command, req={}, depth=50):
 
 		poloniex_url = 'https://poloniex.com/public?command='
 		currency_pair = str(req['currencyPair'])
@@ -43,7 +43,7 @@ class Poloniex:
 			ret = urlopen(Request(poloniex_url + command))
 			return json.loads(ret.read())
 		elif(command == "returnOrderBook"):
-			ret = urlopen(Request(poloniex_url + command + '&currencyPair=' + currency_pair))
+			ret = urlopen(Request(poloniex_url + command + '&currencyPair=' + currency_pair + '&depth=' + str(depth)))
 			return json.loads(ret.read())
 		elif(command == "returnMarketTradeHistory"):
 			ret = urlopen(Request(poloniex_url + "returnTradeHistory" + '&currencyPair=' + currency_pair))
@@ -68,8 +68,8 @@ class Poloniex:
 	def return24Volume(self):
 		return self.apiQuery("return24Volume")
 
-	def returnOrderBook (self, currency_pair):
-		return self.apiQuery("returnOrderBook", {'currencyPair': currency_pair})
+	def returnOrderBook (self, currency_pair, depth):
+		return self.apiQuery("returnOrderBook", {'currencyPair': currency_pair}, depth)
 
 	def returnMarketTradeHistory (self, currency_pair):
 		return self.apiQuery("returnMarketTradeHistory", {'currencyPair': currency_pair})
