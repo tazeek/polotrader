@@ -11,7 +11,7 @@ def createTimeStamp(datestr, format="%Y-%m-%d %H:%M:%S"):
 	return time.mktime(time.strptime(datestr, format))
 
 
-class poloniex:
+class Poloniex:
 
 	# For own accounts (non-public)
 	def __init__(self, APIKey, Secret):
@@ -62,14 +62,14 @@ class poloniex:
 			jsonRet = json.loads(ret.read())
 			return self.post_process(jsonRet)
 
-	def returnTicket(self):
-		return self.api_query("returnTicker")
+	def returnTicker(self):
+		return self.apiQuery("returnTicker")
 
 	def return24Volume(self):
-		return self.api_query("return24Volume")
+		return self.apiQuery("return24Volume")
 
-	def returnOrderBook (self, currencyPair):
-		return self.api_query("returnOrderBook", {'currencyPair': currencyPair})
+	def returnOrderBook (self, currency_pair):
+		return self.apiQuery("returnOrderBook", {'currencyPair': currency_pair})
 
-	def returnMarketTradeHistory (self, currencyPair):
-		return self.api_query("returnMarketTradeHistory", {'currencyPair': currencyPair})
+	def returnMarketTradeHistory (self, currency_pair):
+		return self.apiQuery("returnMarketTradeHistory", {'currencyPair': currency_pair})
