@@ -61,3 +61,15 @@ class poloniex:
 			ret = urlopen(Request('https://poloniex.com/tradingApi', post_data, headers))
 			jsonRet = json.loads(ret.read())
 			return self.post_process(jsonRet)
+
+	def returnTicket(self):
+		return self.api_query("returnTicker")
+
+	def return24Volume(self):
+		return self.api_query("return24Volume")
+
+	def returnOrderBook (self, currencyPair):
+		return self.api_query("returnOrderBook", {'currencyPair': currencyPair})
+
+	def returnMarketTradeHistory (self, currencyPair):
+		return self.api_query("returnMarketTradeHistory", {'currencyPair': currencyPair})
